@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ubgames</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:Inter,system-ui,Arial}
+body{background:#000;color:#fff;display:flex;height:100vh;overflow:hidden}
+
+/* SIDEBAR */
+.sidebar{
+  width:72px;
+  background:#050505;
+  border-right:1px solid #1b1b1b;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding-top:16px;
+}
+.sidebar .icon{
+  width:42px;height:42px;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:12px;
+  margin:8px 0;
+  opacity:.7;
+  cursor:pointer;
+}
+.sidebar .icon:hover{background:#141414;opacity:1}
+
+/* MAIN */
+.main{flex:1;overflow-y:auto}
+
+/* TOP BAR */
+.topbar{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  padding:14px 22px;
+  border-bottom:1px solid #1b1b1b;
+}
+.logo{font-weight:700;font-size:20px}
+.search{
+  flex:1;
+  background:#111;
+  border:none;
+  padding:12px 18px;
+  border-radius:999px;
+  color:#fff;
+}
+.search::placeholder{color:#777}
+.allbtn{
+  background:#111;
+  padding:10px 14px;
+  border-radius:12px;
+  font-size:13px;
+}
+
+/* HERO */
+.hero{
+  margin:18px 22px;
+  background:linear-gradient(135deg,#7f1fff,#00c2a8);
+  border-radius:22px;
+  padding:28px;
+  height:170px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.hero h1{font-size:26px;margin-bottom:8px}
+.hero button{
+  width:max-content;
+  background:rgba(0,0,0,.35);
+  border:1px solid rgba(255,255,255,.2);
+  color:#fff;
+  padding:10px 16px;
+  border-radius:12px;
+  cursor:pointer;
+}
+
+/* SECTIONS */
+.section{padding:12px 22px}
+.section h2{
+  font-size:18px;
+  margin-bottom:12px;
+}
+
+/* ROW */
+.row{
+  display:flex;
+  gap:14px;
+  overflow-x:auto;
+  padding-bottom:10px;
+}
+
+/* CARD */
+.card{
+  min-width:170px;
+  height:96px;
+  background:#141414;
+  border-radius:16px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  font-size:13px;
+  cursor:pointer;
+  transition:.25s ease;
+}
+.card:hover{
+  transform:scale(1.15);
+  box-shadow:0 0 30px rgba(255,255,255,.18);
+}
+
+/* PLAYER */
+.player{
+  position:fixed;
+  inset:0;
+  background:#000;
+  display:none;
+  flex-direction:column;
+  z-index:999;
+}
+.player-top{
+  background:#111;
+  padding:12px 18px;
+  display:flex;
+  justify-content:space-between;
+}
+.player iframe{flex:1;border:none}
+.close{cursor:pointer;color:#ff5c5c}
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <div class="icon">☰</div>
+  <div class="icon">🏠</div>
+  <div class="icon">🔥</div>
+  <div class="icon">🔤</div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="logo">🍑 ubgames</div>
+  <input class="search" placeholder="Search for a game or keyword">
+  <div class="allbtn">All Games ⌄</div>
+</div>
+
+<!-- POPULAR / HERO -->
+<div class="hero">
+  <h1>See what's popular right now</h1>
+  <button>🔥 View our popular games</button>
+</div>
+
+<!-- GAMES -->
+<div class="section">
+<h2>Popular</h2>
+<div class="row">
+
+<div class="card" onclick="play('https://www.retrogames.cc/embed/40238-tekken-3.html')">Tekken 3</div>
+<div class="card" onclick="play('https://www.retrogames.cc/embed/40077-contender-2.html')">Contender 2</div>
+<div class="card" onclick="play('https://www.retrogames.cc/embed/28096-dragon-ball-z-supersonic-warriors-k-projectg.html')">DBZ Supersonic</div>
+<div class="card" onclick="play('https://www.retrogames.cc/embed/10030-street-fighter-ii-champion-edition-street-fighter-2-920513-etc.html')">Street Fighter II</div>
+<div class="card" onclick="play('https://www.retrogames.cc/embed/17484-fifa-2000-usa.html')">FIFA 2000</div>
+
+<div class="card" onclick="play('https://cloud.onlinegames.io/games/2026/unity/steal-brainrot-heist/game.html')">Brainrot Heist</div>
+<div class="card" onclick="play('https://cloud.onlinegames.io/games/2025/unity4/fast-food-manager/index-og.html')">Fast Food Manager</div>
+<div class="card" onclick="play('https://www.onlinegames.io/games/2023/construct/211/highway-cars/index.html')">Highway Cars</div>
+<div class="card" onclick="play('https://www.onlinegames.io/games/2023/unity2/guerrillas-io/index.html')">Guerrillas.io</div>
+<div class="card" onclick="play('https://www.onlinegames.io/games/2022/unity2/masked-special-forces/index.html')">Masked Forces</div>
+<div class="card" onclick="play('https://www.onlinegames.io/games/2023/unity/drift-fury/index.html')">Drift Fury</div>
+<div class="card" onclick="play('https://cloud.onlinegames.io/games/2022/unity3/crazy-moto-racing/index-og.html')">Crazy Moto Racing</div>
+<div class="card" onclick="play('https://www.onlinegames.io/games/2022/unity/taxi-simulator/index.html')">Taxi Simulator</div>
+<div class="card" onclick="play('https://www.onlinegames.io/games/2022/unity/mech-shooter/index.html')">Mech Shooter</div>
+<div class="card" onclick="play('https://cloud.onlinegames.io/games/2024/construct/219/stickman-parkour/index-og.html')">Stickman Parkour</div>
+<div class="card" onclick="play('https://cloud.onlinegames.io/games/2023/unity2/real-flight-simulator/index.html')">Flight Simulator</div>
+<div class="card" onclick="play('https://www.onlinegames.io/games/2023/q2/geometry-dash-freezenova/index.html')">Geometry Dash</div>
+<div class="card" onclick="play('https://www.onlinegames.io/games/2021/unity/agent-smith/index.html')">Agent Smith</div>
+<div class="card" onclick="play('https://www.onlinegames.io/games/2022/unity/fnf-funk-3d/index.html')">FNF Funk 3D</div>
+<div class="card" onclick="play('https://cloud.onlinegames.io/games/2025/construct/302/davo/index-og.html')">DAVO</div>
+<div class="card" onclick="play('https://www.onlinegames.io/games/2022/unity/the-farmer/index.html')">The Farmer</div>
+<div class="card" onclick="play('https://www.onlinegames.io/games/2021/unity2/war-simulator/index.html')">War Simulator</div>
+<div class="card" onclick="play('https://www.onlinegames.io/games/2021/unity3/toonz-io/index.html')">Toonz.io</div>
+<div class="card" onclick="play('https://www.onlinegames.io/games/2024/unity/funny-shooter-bro/index.html')">Funny Shooter</div>
+<div class="card" onclick="play('https://www.onlinegames.io/games/2022/unity/zombie-war-defense/index.html')">Zombie Defense</div>
+<div class="card" onclick="play('https://www.onlinegames.io/games/2023/unity3/idle-dev-startup/index.html')">Idle Dev Startup</div>
+
+</div>
+</div>
+
+</div>
+
+<!-- PLAYER -->
+<div class="player" id="player">
+  <div class="player-top">
+    <div>Now Playing</div>
+    <div class="close" onclick="closePlayer()">✖ Close</div>
+  </div>
+  <iframe id="frame" allowfullscreen></iframe>
+</div>
+
+<script>
+function play(url){
+  frame.src = url;
+  player.style.display = "flex";
+}
+function closePlayer(){
+  frame.src = "";
+  player.style.display = "none";
+}
+</script>
+
+</body>
+</html>
